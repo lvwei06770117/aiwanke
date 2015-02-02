@@ -29,9 +29,10 @@ class HiApkSpider(scrapy.Spider):
             # item["iconUrl"] = liItem.xpath('div/div[contains(@class,"left")]/a/img/@src').extract()
             # item["apkUrl"] = liItem.xpath('div/div[contains(@class,"right_mt")]/a/@href').extract()
             # item["desc"] = liItem.xpath('div/dl[contains(@class,"list_content")]/dd/div[contains(@class,"list_description")]/text()').extract()
-            item["authorName"]=''
-            item["categoryName"]=''
+            item["author_name"]=''
+            item["category_name"]=''
             item["source"] = 2 #2:安卓市场
+            item["editor"] = 1
             yield item
 
         #下一页

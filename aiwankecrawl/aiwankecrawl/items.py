@@ -5,18 +5,10 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.contrib.djangoitem import DjangoItem
+from aiwanke.models import GameApp
 
-
-#应用宝
-class AppItem(scrapy.Item):
-    # define the fields for your item here like:
-    appName = scrapy.Field()
-    iconUrl = scrapy.Field()
-    apkUrl = scrapy.Field()
-    desc = scrapy.Field()
-    authorName = scrapy.Field()
-    categoryName = scrapy.Field()
-    source = scrapy.Field()
+class AppItem(DjangoItem):
+    django_model = GameApp
 
 

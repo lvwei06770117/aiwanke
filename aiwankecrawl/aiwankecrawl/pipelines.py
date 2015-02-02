@@ -109,3 +109,8 @@ class MySQLStorePipeline(object):
             print "error %d: %s" % (e.args[0], e.args[1])
         cursor.close()
         conn.close()
+
+class DjangoPipeline(object):
+    def process_item(self, item, spider):
+        item.save()
+        return item

@@ -41,9 +41,10 @@ class MyAppSpider(scrapy.Spider):
             item["iconUrl"] = app["iconUrl"]
             item["apkUrl"] = app["apkUrl"]
             item["desc"] = app["editorIntro"]
-            item["authorName"] = app["authorName"]
-            item["categoryName"] = app["categoryName"]
+            item["author_name"] = app["authorName"]
+            item["category_name"] = app["categoryName"]
             item["source"] = 5 # 5:应用宝
+            item["editor"] = 1
             yield item
     #http://sj.qq.com/myapp/cate/appList.htm?orgame=2&categoryId=0&pageSize=20&pageContext=40
 
