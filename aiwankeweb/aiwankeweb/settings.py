@@ -50,7 +50,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'aiwankeweb.urls'
-
 WSGI_APPLICATION = 'aiwankeweb.wsgi.application'
 
 

@@ -30,3 +30,16 @@ sys.path.insert(0,os.path.join(AIWANKE_DIR,'aiwankeweb'))
 # Setting up django's settings module name.
 # This module is located at aiwanke/aiwankeweb/aiwankeweb/settings.py.
 os.environ['DJANGO_SETTINGS_MODULE'] = 'aiwankeweb.settings'
+
+#fire up django settings modules
+from django.conf import settings
+from django.core.exceptions import ImproperlyConfigured
+try:
+    settings.INSTALLED_APPS
+except ImproperlyConfigured as exc:
+    pass
+#settings._setup()
+import django
+if settings.configured:
+    django.setup()
+

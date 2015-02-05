@@ -4,6 +4,7 @@ __author__ = 'wei'
 
 import scrapy
 from aiwankecrawl.items import AppItem
+from django.contrib.auth.models import User
 
 import json
 import re
@@ -44,7 +45,7 @@ class MyAppSpider(scrapy.Spider):
             item["author_name"] = app["authorName"]
             item["category_name"] = app["categoryName"]
             item["source"] = 5 # 5:应用宝
-            item["editor"] = 1
+            item["editor"] = User.objects.get(username='lvwei')
             yield item
     #http://sj.qq.com/myapp/cate/appList.htm?orgame=2&categoryId=0&pageSize=20&pageContext=40
 
