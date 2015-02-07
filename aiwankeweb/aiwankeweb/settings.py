@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aiwanke',
+    'apps.rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,3 +86,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK={
+    # Pagination
+    'PAGINATE_BY': 20,
+    'PAGINATE_BY_PARAM': 20,
+    'MAX_PAGINATE_BY': 100,
+}
