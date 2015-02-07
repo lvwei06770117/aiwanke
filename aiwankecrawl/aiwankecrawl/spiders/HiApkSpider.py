@@ -2,13 +2,8 @@
 __author__ = 'wei'
 
 import scrapy
-from scrapy.http.request import Request
 from aiwankecrawl.items import AppItem
-
-import sys
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
+from django.contrib.auth.models import User
 
 class HiApkSpider(scrapy.Spider):
     name = "HiApk"
@@ -29,9 +24,10 @@ class HiApkSpider(scrapy.Spider):
             # item["iconUrl"] = liItem.xpath('div/div[contains(@class,"left")]/a/img/@src').extract()
             # item["apkUrl"] = liItem.xpath('div/div[contains(@class,"right_mt")]/a/@href').extract()
             # item["desc"] = liItem.xpath('div/dl[contains(@class,"list_content")]/dd/div[contains(@class,"list_description")]/text()').extract()
-            item["authorName"]=''
-            item["categoryName"]=''
+            item["author_name"]=''
+            item["category_name"]=''
             item["source"] = 2 #2:安卓市场
+            item["editor"] = User.objects.get(username='lvwei')
             yield item
 
         #下一页

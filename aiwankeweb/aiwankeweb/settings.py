@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'aiwanke',
+    'apps.rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,7 +51,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'aiwankeweb.urls'
-
 WSGI_APPLICATION = 'aiwankeweb.wsgi.application'
 
 
@@ -58,8 +59,12 @@ WSGI_APPLICATION = 'aiwankeweb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'aiwankedb',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -81,3 +86,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK={
+    # Pagination
+    'PAGINATE_BY': 20,
+    'PAGINATE_BY_PARAM': 20,
+    'MAX_PAGINATE_BY': 100,
+}
