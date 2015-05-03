@@ -48,6 +48,11 @@ Icon
 #PyCharm IDE
 .idea/
 
+#Eclipse IDE
+.settings/
+.classpath
+.project
+
 #Python Complied File
 *.pyc
 
