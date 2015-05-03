@@ -1,0 +1,39 @@
+{% extends "aiwanke/base.html" %}
+{% load aiwanke %}
+{% block title %}爱玩客-游戏列表{% endblock %}
+
+{% block main_content %}
+    <div class="container main">
+        <section class="rookie">
+            <div class="wrapp">
+                <h2>游戏列表</h2>
+                <ul class="clearfix">
+                    {% for game in game_list %}
+                    <li class="{% if forloop.counter0|divisibleby:4 %}nomargin{% endif %}">
+                        <h3>
+                            <a href="{% url 'aiwanke:detail' game.id %}" target="_blank">
+                                <img src="{{ game.iconUrl }}" class="normalELogo" alt="{{ game.appName }}">
+                            </a>
+                            <p>{{ game.appName }}</p>
+                        </h3>
+                        <div class="desc">
+                            {{ game.desc|truncatechars:100 }}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        <nav>
+        <ul class="pager">
+            {% if page_obj.has_previous %}
+            <li class="previous"><a href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li class="next"><a href="?page={{ page_obj.next_page_number }}">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    </div>
+
+{% endblock %}
