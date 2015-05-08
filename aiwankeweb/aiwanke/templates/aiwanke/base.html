@@ -10,13 +10,12 @@
             {% endblock %}
 
             <title>{% block title %}爱玩客{% endblock %}</title>
-            <link rel="stylesheet" type="text/css" href="{% static "aiwanke/css/aiwanke.css" %}">
             {% block style %}
                 {% block bootstrap_theme %}
                     <link rel="stylesheet" type="text/css" href="{% static "aiwanke/css/bootstrap.min.css" %}"/>
                 {% endblock %}
             {% endblock %}
-
+            <link rel="stylesheet" type="text/css" href="{% static "aiwanke/css/aiwanke.css" %}">
         {% endblock %}
     </head>
 
@@ -50,6 +49,11 @@
         {% block main_content %}
 
         {% endblock %}
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">developed by scrapy,bootstrap..</p>
+            </div>
+        </footer>
         {% block script %}
             <script src="{% static "aiwanke/js/jquery-1.8.1-min.js" %}"></script>
             <script src="{% static "aiwanke/js/bootstrap.min.js" %}"></script>

@@ -18,6 +18,12 @@ class GameApp(models.Model):
     view_cnt = models.PositiveIntegerField(db_column='views',default=0)
     rates = models.PositiveIntegerField(db_column='rates',default=0)
 
+#游戏截图列表
+class GameAppScreen(models.Model):
+    game = models.ForeignKey(GameApp,related_name="screenshots")
+    picture = models.CharField(max_length=200,db_column='pic')
+    create_time = models.DateTimeField(auto_now_add=True,db_column='createtime')
+
 
 
 

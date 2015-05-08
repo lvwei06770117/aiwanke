@@ -20,7 +20,7 @@ class MyAppSpider(scrapy.Spider):
     name = "MyApp"
     allowed_domains = ["qq.com"]
     start_urls = ['http://sj.qq.com/myapp/cate/appList.htm?orgame=2&categoryId=0&pageSize=20&pageContext=%s' %
-                  (pageIndex*20) for pageIndex in xrange(1,26)]
+                  (pageIndex*20) for pageIndex in xrange(1,3)]
 
     def parse(self, response):
         #log.msg(response.encoding,level=log.INFO)
@@ -46,6 +46,7 @@ class MyAppSpider(scrapy.Spider):
             item["category_name"] = app["categoryName"]
             item["source"] = 5 # 5:应用宝
             item["editor"] = User.objects.get(username='lvwei')
+            item['screen_urls'] = app["images"]
             yield item
     #http://sj.qq.com/myapp/cate/appList.htm?orgame=2&categoryId=0&pageSize=20&pageContext=40
 

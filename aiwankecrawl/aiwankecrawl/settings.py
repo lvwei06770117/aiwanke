@@ -7,6 +7,10 @@
 #
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+AIWANKE_DIR = os.path.join(BASE_DIR, os.pardir)
+IMAGES_STORE = os.path.join(AIWANKE_DIR,'aiwankeweb/media')
 
 BOT_NAME = 'aiwankecrawl'
 
@@ -14,8 +18,10 @@ SPIDER_MODULES = ['aiwankecrawl.spiders']
 NEWSPIDER_MODULE = 'aiwankecrawl.spiders'
 
 ITEM_PIPELINES = {
-    #'aiwankecrawl.pipelines.JsonWriterPipeline': 300,
-    'aiwankecrawl.pipelines.DjangoPipeline': 100,
+    'aiwankecrawl.pipelines.IconImagesPipeline': 100,
+    'aiwankecrawl.pipelines.DjangoPipeline': 200,
+    'aiwankecrawl.pipelines.ScreenImagesPipeline': 300,
+    #'aiwankecrawl.pipelines.JsonWriterPipeline': 400,
 }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -23,9 +29,6 @@ ITEM_PIPELINES = {
 
 # Setting up django's project full path.
 import sys
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-AIWANKE_DIR = os.path.join(BASE_DIR, os.pardir)
 sys.path.insert(0,os.path.join(AIWANKE_DIR,'aiwankeweb'))
 # Setting up django's settings module name.
 # This module is located at aiwanke/aiwankeweb/aiwankeweb/settings.py.
