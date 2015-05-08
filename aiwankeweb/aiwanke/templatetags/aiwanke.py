@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 __author__ = 'wei'
 
+from django import template
 from django.template import Library
+from django.utils.six.moves.urllib.parse import urljoin
+from django.conf import settings
+from django.utils.encoding import iri_to_uri
 
 register = Library()
 

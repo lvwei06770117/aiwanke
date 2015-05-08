@@ -36,7 +36,7 @@ def home(request):
 
 def index(request):
     game_list = GameApp.objects.order_by('-create_time')
-    paginator = Paginator(game_list, 25) # Show 25 contacts per page
+    paginator = Paginator(game_list, 8) # Show 8 contacts per page
     page_number = request.GET.get('page')
     try:
         games = paginator.page(page_number)

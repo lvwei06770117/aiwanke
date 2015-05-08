@@ -56,6 +56,9 @@ Icon
 #Python Complied File
 *.pyc
 
+#pictures of aiwanke app's screen
+aiwankeweb/media/
+
 
 
 
