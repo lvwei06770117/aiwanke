@@ -33,6 +33,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.comments',
     'aiwanke',
     'apps.rest_framework'
 )
@@ -46,6 +48,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+SITE_ID=1
 ROOT_URLCONF = 'aiwankeweb.urls'
 WSGI_APPLICATION = 'aiwankeweb.wsgi.application'
 

@@ -129,7 +129,27 @@ img.normalELogo {
     height: 350px;
 }
 .app_comment_box {
-    padding: 20px 0px 10px 0px;
+    padding: 0px 0px 10px 0px;
     color: #333333;
+}
+.comment_list {
+  padding: 20px 0px 0px;
+}
+.comment_item {
+  border-bottom: solid 1px #d2d2d2;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.comment_item .comment_content {
+  padding: 4px 0px;
+  line-height: 10px;
+  overflow: hidden;
+  color: #777777;
+  word-break: break-all;
+}
+.comment_item .comment_note {
+    float: right;
+    padding-top: 5px;
+    height: 15px;
 }
 

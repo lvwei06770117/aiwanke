@@ -45,7 +45,7 @@ def index(request):
     except EmptyPage:
         games = paginator.page(paginator.num_pages)
     except InvalidPage as exc:
-        error_format = _('Invalid page (%(page_number)s): %(message)s')
+        error_format = 'Invalid page (%(page_number)s): %(message)s'
         raise Http404(error_format % {
             'page_number': page_number,
             'message': six.text_type(exc)
@@ -73,3 +73,7 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = GameApp
     template_name = 'aiwanke/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context={}
+        return super(generic.DetailView, self).get_context_data(**context)

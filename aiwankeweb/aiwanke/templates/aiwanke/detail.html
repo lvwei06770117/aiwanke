@@ -1,5 +1,6 @@
 {% extends "aiwanke/base.html" %}
-{% load static %}
+{% load static comments %}
+{% block title %}爱玩客-{{ object.appName }}{% endblock %}
 {% block main_content %}
     <div class="container main">
         <div class="post-header">
@@ -68,7 +69,43 @@
                     </div>
 
                 </div>
-                <div class="col-xs-12 col-md-5"></div>
+                <div class="col-xs-12 col-md-5">
+                    <div class="app_comment_box">
+                        {% get_comment_count for object as comment_count %}
+                        <h4>所有评论(<span id="comentCount">{{ comment_count }}</span>条)</h4>
+                        <div class="app_line_border"></div>
+                        {% get_comment_form for object as comment_form %}
+                        <div class="comment_area">
+                            <form action="{% comment_form_target %}" method="post">
+                                {% csrf_token %}
+                                {% for field in comment_form %}
+                                    {% if field.name != 'email' and field.name != 'name' and field.name != 'url' and field.name != 'honeypot' %}
+                                        {{ field }}
+                                    {% endif %}
+                                {% endfor %}
+                                <input type="hidden" name="name" id="id_name"  value="foo" />
+                                <input type="hidden" name="email" id="id_email" value="foo@aiwanke.com" />
+                                <input type="hidden" name="next" value="{% url 'aiwanke:detail' object.id %}" />
+                                <div class="form-actions">
+                                    <input class="btn btn-info" type="submit" name="submit" value="提交">
+                                </div>
+                              </form>
+                        </div>
+                        {% get_comment_list for object as comment_list %}
+                        {% if comment_list %}
+                        <div class="comment_list">
+                        {% for comment in comment_list %}
+                            <div class="comment_item">
+                                <div class="comment_content">{{ comment.comment|truncatechars:100 }}</div>
+                                <div class="comment_note">
+                                    {{ comment.submit_date|date:"F j, Y" }} - {{ comment.submit_date|date:"P" }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
