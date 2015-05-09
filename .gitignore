@@ -48,8 +48,16 @@ Icon
 #PyCharm IDE
 .idea/
 
+#Eclipse IDE
+.settings/
+.classpath
+.project
+
 #Python Complied File
 *.pyc
+
+#pictures of aiwanke app's screen
+aiwankeweb/media/
 
 
 

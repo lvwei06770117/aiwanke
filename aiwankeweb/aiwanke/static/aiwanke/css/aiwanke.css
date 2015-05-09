@@ -1,0 +1,155 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+body {
+    margin: 0;
+    font-family: Tahoma,Arial,Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    color: #333;
+    background-color: #fff;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.footer {
+    position: absolute;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.mt30, .mt-30 {
+    margin-top: 30px;
+}
+
+/* index Page
+-------------------------------------------------- */
+img.normalELogo {
+  width: 96px;
+  height: 96px;
+}
+.main{
+    padding-top: 54px;
+    margin-bottom: 20px;
+}
+.rookie .wrapp {
+  width: 1130px;
+  margin: 0 auto;
+}
+.rookie ul.clearfix {
+    max-height: 700px;
+    overflow: hidden;
+    background: #efefef;
+    padding: 0px;
+    list-style: none;
+}
+.rookie ul .nomargin {
+    margin-left: 0;
+}
+.rookie ul li {
+    float: left;
+    width: 250px;
+    height: 300px;
+    margin: 45px 0 0 43px;
+    background: #fcfcfc;
+}
+.rookie ul li h3 {
+    height: 125px;
+    line-height: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #12184c;
+    background: #fff;
+}
+ .rookie ul li h3 a {
+    display: inline-block;
+    width: 250px;
+    padding-top: 10px;
+    text-align: center;
+}
+ .rookie ul li h3 p {
+    height: 26px;
+    line-height: 29px;
+}
+ .rookie ul li div.desc {
+    height: 140px;
+    padding: 20px 20px 20px 17px;
+    overflow: hidden;
+}
+
+ /* Detail Page
+-------------------------------------------------- */
+.post-header .author {
+    margin-top: 10px;
+    color: #999;
+}
+.post-topheader .widget-action--ver {
+    margin-top: 10px;
+    color: #999;
+}
+.list-unstyled, .list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+.widget-action--ver li:first-child {
+    margin-top: 0;
+    margin-bottom: 3px;
+}
+.app_line_border {
+    margin-top: 1px;
+    height: 1px;
+    overflow: hidden;
+    background-color: #d2d2d2;
+}
+/* Carousel base class */
+.carousel {
+    height: 350px;
+    width: 400px;
+    margin: 10px auto 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+}
+/* Declare heights because of positioning of img element */
+.carousel .item {
+    height: 350px;
+    background-color: #777;
+}
+.carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 350px;
+}
+.app_comment_box {
+    padding: 0px 0px 10px 0px;
+    color: #333333;
+}
+.comment_list {
+  padding: 20px 0px 0px;
+}
+.comment_item {
+  border-bottom: solid 1px #d2d2d2;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.comment_item .comment_content {
+  padding: 4px 0px;
+  line-height: 10px;
+  overflow: hidden;
+  color: #777777;
+  word-break: break-all;
+}
+.comment_item .comment_note {
+    float: right;
+    padding-top: 5px;
+    height: 15px;
+}
+

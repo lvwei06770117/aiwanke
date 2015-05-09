@@ -7,13 +7,18 @@
 
 from twisted.enterprise import adbapi
 from scrapy import log
+import scrapy
+from scrapy.contrib.pipeline.images import ImagesPipeline
+from scrapy.exceptions import DropItem
+
+from aiwankecrawl.items import AppScreenItem
+from aiwanke.models import GameApp
 
 import codecs
 import json
 import datetime
 import sys
 import MySQLdb
-
 
 class JsonWriterPipeline(object):
     def __init__(self):
@@ -112,5 +117,48 @@ class MySQLStorePipeline(object):
 
 class DjangoPipeline(object):
     def process_item(self, item, spider):
-        item.save()
+        game_app = item.save()
+        #存储主键,用于后面的游戏封面截图实体获取游戏实体
+        item['game_id'] = game_app.id
+        return item
+
+#游戏图标下载器
+class IconImagesPipeline(ImagesPipeline):
+    def get_media_requests(self, item, info):
+        yield scrapy.Request(item['iconUrl'])
+
+    def file_path(self, request, response=None, info=None):
+        url = request.url
+        spider_name = info.spider.name if info else "full"
+        image_name = '%s.png' % url.split('/')[-2] if spider_name == 'MyApp' else url.split('/')[-1]
+        return '%s/%s' % (spider_name,image_name)
+
+    def item_completed(self, results, item, info):
+        image_paths = [x['path'] for ok, x in results if ok]
+        if not image_paths:
+            raise DropItem("Item contains no images")
+        item['iconUrl'] = image_paths[0]
+        return item
+
+#游戏截图列表下载器
+class ScreenImagesPipeline(ImagesPipeline):
+    def get_media_requests(self, item, info):
+        for image_url in item['screen_urls']:
+            yield scrapy.Request(image_url)
+
+    def file_path(self, request, response=None, info=None):
+        url = request.url
+        spider_name = info.spider.name if info else "full"
+        image_name = '%s.jpg' % url.split('/')[-2] if spider_name == 'MyApp' else url.split('/')[-1]
+        return '%s/screens/%s' % (spider_name,image_name)
+
+    def item_completed(self, results, item, info):
+        image_paths = [x['path'] for ok, x in results if ok]
+        if not image_paths:
+            raise DropItem("Item contains no images")
+        for pic_url in image_paths:
+            screenItem = AppScreenItem()
+            screenItem['game'] = GameApp.objects.get(pk=item['game_id'])
+            screenItem['picture'] = pic_url
+            screenItem.save()
         return item

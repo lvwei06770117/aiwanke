@@ -21,11 +21,8 @@ SECRET_KEY = 'o*+g-%j+0jm(%su*iwu+5(^f3znnp*wvbppoac&s#v)*+7dw4e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -36,6 +33,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.comments',
     'aiwanke',
     'apps.rest_framework'
 )
@@ -50,6 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+SITE_ID=1
 ROOT_URLCONF = 'aiwankeweb.urls'
 WSGI_APPLICATION = 'aiwankeweb.wsgi.application'
 
@@ -84,8 +84,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 REST_FRAMEWORK={
     # Pagination
